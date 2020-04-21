@@ -3,9 +3,13 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-ngrx-playground": {
+    "angular-ngrx-material-example": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@ngrx/schematics:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,19 +17,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng-ngrx-playground",
+            "outputPath": "dist/angular-ngrx-material-example",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -62,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-ngrx-playground:build"
+            "browserTarget": "angular-ngrx-material-example:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-ngrx-playground:build:production"
+              "browserTarget": "angular-ngrx-material-example:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-ngrx-playground:build"
+            "browserTarget": "angular-ngrx-material-example:build"
           }
         },
         "test": {
@@ -83,13 +82,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         },
@@ -101,24 +95,26 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ng-ngrx-playground:serve"
+            "devServerTarget": "angular-ngrx-material-example:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ng-ngrx-playground:serve:production"
+              "devServerTarget": "angular-ngrx-material-example:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "ng-ngrx-playground"
+    }
+  },
+  "defaultProject": "angular-ngrx-material-example",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
