@@ -7,19 +7,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  @Output() user = new EventEmitter();
+  @Output() submitLogin = new EventEmitter();
+  hide = true;
+
   loginForm: FormGroup = this.fb.group({
-    username: [null, Validators.required],
+    email: [null, [Validators.required, Validators.email]],
     password: [null, Validators.required],
   });
 
   constructor(private fb: FormBuilder) {}
-
-  onSubmit() {
-    if (!this.loginForm.valid) {
-      return;
-    }
-
-    this.user.emit(this.loginForm.value);
-  }
 }
