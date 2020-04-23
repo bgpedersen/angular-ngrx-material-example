@@ -1,0 +1,80 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="registerForm" novalidate>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="full-width" appearance="standard">
+        <mat-label>Email*</mat-label>
+        <input
+          matInput
+          placeholder="email"
+          formControlName="email"
+          type="email"
+        />
+        <mat-error *ngIf="controls.email.hasError('required')"
+          >Email is <strong>required</strong></mat-error
+        >
+        <mat-error *ngIf="controls.email.hasError('email')"
+          >Email must be <strong>valid</strong></mat-error
+        >
+        <mat-icon matPrefix>mail</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="standard">
+        <mat-label>Password*</mat-label>
+        <input
+          matInput
+          placeholder="password"
+          formControlName="password"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <mat-icon matPrefix>lock</mat-icon>
+        <mat-hint>Must be at least 4 chars</mat-hint>
+        <mat-error *ngIf="controls.password.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="controls.password.hasError('minlength')"
+          >Password must be at least <strong>4 chars</strong></mat-error
+        >
+        <button mat-icon-button matSuffix (click)="hide = !hide">
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div formGroupName="info" class="info">
+        <mat-card-subtitle>Optional</mat-card-subtitle>
+        <mat-form-field appearance="standard">
+          <mat-label>Firstname</mat-label>
+          <input matInput formControlName="firstname" placeholder="firstname" />
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+          <mat-label>Lastname</mat-label>
+          <input matInput formControlName="lastname" placeholder="lastname" />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions align="right">
+      <button
+        mat-raised-button
+        type="button"
+        color="warning"
+        [routerLink]="['/']"
+      >
+        Cancel
+      </button>
+      <button
+        mat-raised-button
+        [disabled]="!registerForm.valid"
+        type="submit"
+        color="primary"
+      >
+        Register
+      </button>
+    </mat-card-actions>
+
+    <mat-card-footer>
+      * required
+    </mat-card-footer>
+  </mat-card>
+</form>

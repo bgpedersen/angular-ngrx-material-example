@@ -1,15 +1,7 @@
-<form
-  [formGroup]="loginForm"
-  novalidate
-  (ngSubmit)="submitLogin.emit(this.loginForm.value)"
->
+<form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
   <mat-card>
     <mat-card-title>
       <mat-card-title>Login</mat-card-title>
-      <img
-        mat-card-image
-        src="https://generative-placeholders.glitch.me/image?width=300&height=100"
-      />
     </mat-card-title>
 
     <mat-card-content>
@@ -63,5 +55,8 @@
         Login
       </button>
     </mat-card-actions>
+    <mat-card-footer>
+      Don't have an account? Register <a [routerLink]="['register']">here</a>
+    </mat-card-footer>
   </mat-card>
 </form>
