@@ -1,9 +1,10 @@
 .container {
   height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 .register {
-  height: 100%;
   display: grid;
   justify-content: center;
   align-content: center;
