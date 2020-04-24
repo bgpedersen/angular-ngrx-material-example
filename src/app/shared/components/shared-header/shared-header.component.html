@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <h1>Angular NgRx Material Example</h1>
+    <mat-slide-toggle color="primary" (change)="toggleTheme()">{{
+      currentTheme$ | async
+    }}</mat-slide-toggle>
+  </mat-toolbar-row>
+</mat-toolbar>

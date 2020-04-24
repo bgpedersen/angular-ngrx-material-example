@@ -8,54 +8,20 @@ $custom-typography: mat-typography-config(
 
 /* ======== angular material custom theme, arguments: (palette/default/light/dark) ======== */
 // Base theme
-$theme-base-primary: mat-palette($mat-blue, 700);
-$theme-base-accent: mat-palette($mat-pink, 100, 500, A100);
-$theme-base-warn: mat-palette($mat-red);
+$theme-primary: mat-palette($mat-blue, 700);
+$theme-accent: mat-palette($mat-indigo, 700);
+$theme-warn: mat-palette($mat-red);
 
-// Red theme
-$theme-red-primary: mat-palette($mat-red);
-$theme-red-accent: mat-palette($mat-green, 400);
-$theme-red-warn: mat-palette($mat-grey);
-
-.theme-base-light {
+.theme-light {
   // Light theme
-  $theme: mat-light-theme(
-    $theme-base-primary,
-    $theme-base-accent,
-    $theme-base-warn
-  );
+  $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 
   @include angular-material-theme($theme);
 }
 
-.theme-base-dark {
+.theme-dark {
   // Dark theme
-  $theme: mat-dark-theme(
-    $theme-base-primary,
-    $theme-base-accent,
-    $theme-base-warn
-  );
-
-  @include angular-material-theme($theme);
-}
-
-// Alternate theme
-.theme-red-light {
-  $theme: mat-light-theme(
-    $theme-red-primary,
-    $theme-red-accent,
-    $theme-red-warn
-  );
-
-  @include angular-material-theme($theme);
-}
-
-.theme-red-dark {
-  $theme: mat-light-theme(
-    $theme-red-primary,
-    $theme-red-accent,
-    $theme-red-warn
-  );
+  $theme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 
   @include angular-material-theme($theme);
 }
