@@ -1,7 +1,7 @@
 <div class="container">
   <app-shared-header></app-shared-header>
   <div class="login">
-    <app-login></app-login>
+    <app-login (formSubmit)="login($event)"></app-login>
   </div>
 </div>
 

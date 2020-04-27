@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Login } from 'src/app/core/models/login.model';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-login-page',
@@ -7,7 +9,16 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginPageComponent implements OnInit {
-  constructor() {}
+  constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {}
+
+  login(login: Login) {
+    this.usersService.login(login).subscribe(
+      (res) => {
+        console.log('success', res);
+      },
+      (err) => console.error(err)
+    );
+  }
 }

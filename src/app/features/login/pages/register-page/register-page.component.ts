@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user.model';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-register-page',
@@ -8,12 +10,24 @@ import { User } from 'src/app/core/models/user.model';
   styleUrls: ['./register-page.component.scss'],
 })
 export class RegisterPageComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private userService: UsersService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {}
 
-  onFormSubmit(value: User) {
-    // TODO save user in database
-    this.router.navigateByUrl('');
+  onFormSubmit(user: User) {
+    this.userService.post(user).subscribe(
+      (res) => {
+        this.snackBar.open('Success! User created');
+        this.router.navigateByUrl('');
+      },
+      (err) => {
+        this.snackBar.open(`Error: ${err}`);
+        console.error(err);
+      }
+    );
   }
 }

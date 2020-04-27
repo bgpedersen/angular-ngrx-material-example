@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/core/models/user.model';
+import { Login } from 'src/app/core/models/login.model';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,7 @@ import { User } from 'src/app/core/models/user.model';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  @Output() submitLogin = new EventEmitter();
+  @Output() formSubmit = new EventEmitter<Login>();
   hide = true;
 
   loginForm: FormGroup = this.fb.group({
@@ -19,6 +19,6 @@ export class LoginComponent {
   constructor(private fb: FormBuilder) {}
 
   onSubmit() {
-    this.submitLogin.emit(new User(this.loginForm.value));
+    this.formSubmit.emit(this.loginForm.value);
   }
 }

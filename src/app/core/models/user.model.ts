@@ -12,8 +12,8 @@ export class User {
   constructor(parameters: User) {
     this.email = parameters.email;
     this.password = parameters.password;
-    this.firstname = parameters.firstname ?? faker.name.firstName();
-    this.lastname = parameters.lastname ?? faker.name.lastName();
+    this.firstname = parameters.firstname || faker.name.firstName();
+    this.lastname = parameters.lastname || faker.name.lastName();
     this.id = faker.random.number(999999);
     this.avatar = faker.image.avatar();
     this.color = faker.internet.color();
