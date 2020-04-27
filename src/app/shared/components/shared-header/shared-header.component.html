@@ -4,5 +4,8 @@
     <mat-slide-toggle color="primary" (change)="toggleTheme()">{{
       currentTheme$ | async
     }}</mat-slide-toggle>
+    <button mat-raised-button (click)="logout()" *ngIf="isAuthenticated">
+      Logout
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
