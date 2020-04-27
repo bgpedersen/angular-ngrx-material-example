@@ -8,7 +8,7 @@
 - Pages and components, such as Register/Login/Dashboard
 - local rest database with JSON-SERVER
 
-## Getting started
+## Installation
 
 Install dependencies
 
@@ -16,8 +16,16 @@ Install dependencies
 npm i
 ```
 
-Start dev server
+## Start
+
+Start dev server in one terminal
 
 ```bash
 npm run start
+```
+
+Start json-server in another terminal for fake api database
+
+```bash
+npm run server
 ```
