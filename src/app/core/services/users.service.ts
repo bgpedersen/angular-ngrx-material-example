@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { Login } from '../models/login.model';
+import { Login } from '../models/models/login.model';
 import { User } from '../models/user.model';
 
 @Injectable({
