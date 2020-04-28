@@ -6,6 +6,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { StoreModule } from '@ngrx/store';
+import * as fromLogin from './reducers';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,6 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
     RegisterPageComponent,
     RegisterComponent,
   ],
-  imports: [CommonModule, LoginRoutingModule, SharedModule],
+  imports: [CommonModule, LoginRoutingModule, SharedModule, StoreModule.forFeature(fromLogin.loginFeatureKey, fromLogin.reducers, { metaReducers: fromLogin.metaReducers })],
 })
 export class LoginModule {}
