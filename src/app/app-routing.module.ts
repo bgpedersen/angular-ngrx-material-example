@@ -3,11 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginGuard } from './core/guards/login.guard';
 
 const routes: Routes = [
-  {
-    path: 'login',
-    loadChildren: () =>
-      import('./features/login/login.module').then((m) => m.LoginModule),
-  },
+  { path: 'login', redirectTo: '/login' },
   {
     path: 'dashboard',
     canActivate: [LoginGuard],
@@ -21,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
