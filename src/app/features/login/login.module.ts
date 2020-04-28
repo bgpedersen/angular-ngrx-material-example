@@ -8,6 +8,8 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import * as fromLogin from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './effects/user.effects';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import * as fromLogin from './reducers';
     StoreModule.forFeature(fromLogin.loginFeatureKey, fromLogin.reducers, {
       metaReducers: fromLogin.metaReducers,
     }),
+    EffectsModule.forFeature([UserEffects]),
   ],
 })
 export class LoginModule {}
