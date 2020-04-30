@@ -4,6 +4,7 @@ import { LoginGuard } from './core/guards/login.guard';
 
 const routes: Routes = [
   { path: 'login', redirectTo: '/login' },
+  { path: 'register', redirectTo: '/register' },
   {
     path: 'dashboard',
     canActivate: [LoginGuard],

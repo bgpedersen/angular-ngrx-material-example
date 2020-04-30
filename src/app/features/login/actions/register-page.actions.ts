@@ -8,7 +8,7 @@ export const createUser = createAction(
 
 export const createUserSuccess = createAction(
   '[RegisterPage] Create User Success',
-  props<{ data: any }>()
+  props<{ data: User }>()
 );
 
 export const createUserFailure = createAction(

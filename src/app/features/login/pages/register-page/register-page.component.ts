@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { User } from 'src/app/core/models/user.model';
-import { UsersService } from 'src/app/core/services/users.service';
+import { createUser } from '../../actions/register-page.actions';
 
 @Component({
   selector: 'app-register-page',
@@ -11,23 +10,26 @@ import { UsersService } from 'src/app/core/services/users.service';
 })
 export class RegisterPageComponent implements OnInit {
   constructor(
-    private router: Router,
-    private userService: UsersService,
-    private snackBar: MatSnackBar
+    // private router: Router,
+    // private userService: UsersService,
+    // private snackBar: MatSnackBar
+    private store: Store
   ) {}
 
   ngOnInit(): void {}
 
   onFormSubmit(user: User) {
-    this.userService.post(user).subscribe(
-      (res) => {
-        this.snackBar.open('Success! User created');
-        this.router.navigateByUrl('');
-      },
-      (err) => {
-        this.snackBar.open(`Error: ${err}`);
-        console.error(err);
-      }
-    );
+    this.store.dispatch(createUser(user));
+
+    // this.userService.post(user).subscribe(
+    //   (res) => {
+    //     this.snackBar.open('Success! User created');
+    //     this.router.navigateByUrl('');
+    //   },
+    //   (err) => {
+    //     this.snackBar.open(`Error: ${err}`);
+    //     console.error(err);
+    //   }
+    // );
   }
 }
